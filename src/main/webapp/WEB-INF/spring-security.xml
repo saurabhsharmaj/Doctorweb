@@ -11,15 +11,11 @@
        <intercept-url pattern="/welcome" access="isAnonymous()" />
        <intercept-url pattern="/login" access="isAnonymous()" />
        <intercept-url pattern="/logout" access="isAnonymous()" />
-   	   <intercept-url pattern="/resources/**" access="permitAll" />
  
  
        <intercept-url pattern="/userInfo"
            access="hasAnyRole('ROLE_USER','ROLE_DOCTOR', 'ROLE_ADMIN')" />
-       <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
-       <intercept-url pattern="/list/**" access="hasRole('ROLE_ADMIN')" />
-       <intercept-url pattern="/add/**" access="hasAnyRole('ROLE_USER','ROLE_DOCTOR', 'ROLE_ADMIN')" />
-       <intercept-url pattern="/edit/**" access="hasAnyRole('ROLE_USER','ROLE_DOCTOR', 'ROLE_ADMIN')" />
+       <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />      
  
        <access-denied-handler error-page="/403" />
  
@@ -34,14 +30,14 @@
    </http>
  
    <authentication-manager>
-       <!-- <authentication-provider>
+       <authentication-provider>
            <user-service>
            	   <user name="all" password="all" authorities="ROLE_USER,ROLE_DOCTOR,ROLE_ADMIN" />
                <user name="admin" password="admin" authorities="ROLE_ADMIN" />
                <user name="doctor" password="doctor" authorities="ROLE_DOCTOR" />
                <user name="user" password="user" authorities="ROLE_USER" />
            </user-service>
-       </authentication-provider>  -->
+       </authentication-provider> 
  
        <!-- authentication from database -->
        <authentication-provider>
