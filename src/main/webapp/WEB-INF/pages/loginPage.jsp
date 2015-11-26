@@ -2,6 +2,7 @@
 <head><title>Login</title></head>
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/main.css">
 <body>
+<jsp:include page="header.jsp" />
  <h1>Login</h1>
  <form name='f' action="j_spring_security_check" method='POST'>
     <table>

@@ -5,9 +5,11 @@
 <html>
 <head>
 	<title>Person Page</title>	
+	
 	<link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/main.css">
 </head>
-<body>
+
+<body onload="displayField();">
 <jsp:include page="header.jsp" />
 <h1>
 	Sign Up
@@ -38,7 +40,7 @@
 			</form:label>
 		</td>
 		<td>
-			<form:select path="role" cssClass="form-control" required="true">
+			<form:select path="role" id = "role" cssClass="form-control" required="true" onchange="displayField();">
 		        <form:option value="">--Select--</form:option>
 		        <form:options items="${userRoles}" itemLabel="code" itemValue="id" />
 		    </form:select>
@@ -55,7 +57,7 @@
 			<form:input path="fullname" />
 		</td> 
 	</tr>
-	<tr>
+	<tr id="specialty">
 		<td>
 			<form:label path="specialty">
 				<spring:message text="specialty"/>
@@ -77,7 +79,7 @@
 		</td>
 	</tr>
 	
-	<tr>
+	<tr id="expirence">
 		<td>
 			<form:label path="expirence">
 				<spring:message text="expirence"/>
