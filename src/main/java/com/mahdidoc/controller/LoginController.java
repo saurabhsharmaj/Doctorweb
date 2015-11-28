@@ -4,12 +4,14 @@ import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mahdidoc.exception.DocException;
 import com.mahdidoc.model.UserProfile;
@@ -54,16 +56,33 @@ public class LoginController {
 		return "adminPage";
 	}
 	
+	
+	@RequestMapping(value = "doctor", method = RequestMethod.GET)
+	public String userPage(Model model) throws DocException{		
+		model.addAttribute("title", "Doctor");
+		//CAN SEE His Patients.
+		return "doctor";
+	}
+	
 	@RequestMapping(value = "userInfo", method = RequestMethod.GET)
 	public String loginPage(Model model, Principal principal) throws DocException {
+		User activeUser = (User) ((Authentication) principal).getPrincipal();
 		model.addAttribute("title", "User Info"); 
-		User activeUser = (User) ((Authentication) principal).getPrincipal(); 
 		model.addAttribute("message",
 				"User Info - This is protected page!. Hello " + activeUser.getUsername());
 		model.addAttribute("user", userService.getRowByName("username", activeUser.getUsername()));
 		model.addAttribute("userRoles", userRoleService.getList());
 		model.addAttribute("status", new UserStatusEnum[]{UserStatusEnum.ACTIVE, UserStatusEnum.DEACTIVE});
-		return "userInfoPage";
+		
+		if(activeUser.getAuthorities().contains(new GrantedAuthorityImpl("ROLE_ADMIN"))){
+			return "forward:/admin";
+		} else if(activeUser.getAuthorities().contains(new GrantedAuthorityImpl("ROLE_DOCTOR"))){
+			return "forward:/doctor";
+		} else {
+			return "userInfoPage";
+
+		}
+
 	}
 
 	

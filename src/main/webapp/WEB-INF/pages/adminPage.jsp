@@ -8,7 +8,7 @@
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/main.css">
 <body onload="displayField();">
 <jsp:include page="header.jsp" />
-   <h2>Message : ${message}</h2>
+   <h2>Administrator</h2>
  
    <c:if test="${pageContext.request.userPrincipal.name != null}">
       <h3>Welcome : ${pageContext.request.userPrincipal.name}

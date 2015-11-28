@@ -36,5 +36,9 @@ public class UserRoleService implements IUserRoleService {
 	public int deleteRow(int id) throws DocException {
 		return userRoleDao.deleteRow(id);
 	}
+
+	public UserRole getRowByName(String columnName, String value) {		
+		return userRoleDao.getRowByName(columnName, value);
+	}
 	
 }

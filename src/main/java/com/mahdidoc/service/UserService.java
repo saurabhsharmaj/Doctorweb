@@ -48,11 +48,8 @@ public class UserService implements IUserService {
 		
 	}
 
-	public UserProfile getRowByName(String fieldName, String value) {
-		// TODO Auto-generated method stub
-		return userDao.getRowByName(fieldName,value);
+	public UserProfile getRowByName(String columnName, String value) {
+		return userDao.getRowByName(columnName, value);
 	}
-
-	
 	
 }

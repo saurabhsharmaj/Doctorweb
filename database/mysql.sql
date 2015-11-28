@@ -25,10 +25,8 @@ enabled TINYINT NOT NULL DEFAULT 1 );
 
 INSERT INTO users(fullname, specialty, age,expirence, email, contact, username,password,role,enabled)
 VALUES ('Mahdi Hassahan',null,25,4,'mahdi@gmail.com','9999999999','mahdi','123456',1, true);
-
 INSERT INTO users(fullname, specialty, age,expirence, email, contact, username,password,role,enabled)
 VALUES ('saurabh sharma','General Medicine',29,5,'saurabh.find@gmail.com','9602273529','saurabh','123456',2, true);
-
 INSERT INTO users(fullname, specialty, age,expirence, email, contact, username,password,role,enabled)
 VALUES ('Abdul',null,29,null,'abdul@gmail.com','6756789043','abdul','123456',3, true);
 

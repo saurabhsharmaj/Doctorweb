@@ -9,10 +9,10 @@
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/main.css">
 <body onload="displayField();">
 <jsp:include page="header.jsp" />
-   <h2>Patient</h2>
+   <h2>Doctor</h2>
  
    <c:if test="${pageContext.request.userPrincipal.name != null}">
-      <h3>User Info : ${pageContext.request.userPrincipal.name}
+      <h3>Hello Dr. : ${pageContext.request.userPrincipal.name}
           | <a href="<c:url value="/logout" />" >Logout</a></h3>  
    </c:if> 
    

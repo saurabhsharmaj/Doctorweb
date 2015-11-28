@@ -7,6 +7,5 @@ public interface IUserService extends IService<UserProfile> {
 
 	void saveUser(UserProfile u)  throws DocException;
 
-	UserProfile getRowByName(String string, String username);
 
 }

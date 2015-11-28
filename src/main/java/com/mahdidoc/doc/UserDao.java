@@ -14,13 +14,6 @@ public class UserDao extends BaseDao<UserProfile> implements Dao<UserProfile> {
 		super(UserProfile.class);
 	}
 
-	public UserProfile getRowByName(String fieldName, String value) {
-		Session session = getSession();
-		DetachedCriteria criteria = DetachedCriteria
-				.forClass(typeParameterClass);
-		criteria.add(Restrictions.eq(fieldName, value));
-		UserProfile t = (UserProfile) criteria.getExecutableCriteria(session).uniqueResult();
-		return t;
-	}	
+		
 
 }

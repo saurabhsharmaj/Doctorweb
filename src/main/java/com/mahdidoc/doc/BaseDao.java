@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import com.mahdidoc.exception.DocException;
+import com.mahdidoc.model.UserProfile;
 
 /**
  * Abstract class implement Dao interface. This class is responsible for
@@ -102,7 +103,14 @@ public abstract class BaseDao<T> implements Dao<T> {
 		return t;
 	}
 
-	
+	public T getRowByName(String fieldName, String value) {
+		Session session = getSession();
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(typeParameterClass);
+		criteria.add(Restrictions.eq(fieldName, value));
+		T t = (T) criteria.getExecutableCriteria(session).uniqueResult();
+		return t;
+	}
 	/**
 	 * Method is used to update data in database. and used Session interface for
 	 * save and update data by calling methos of this interface.
